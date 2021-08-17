@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace ConsoleApp1
@@ -7,8 +7,8 @@ namespace ConsoleApp1
   {
     private static void Main(string[] args)
     {
-      var directoryName = Path.GetDirectoryName(new Uri(typeof(Confluent.Kafka.Library).Assembly.GetName().EscapedCodeBase).LocalPath);
-      Confluent.Kafka.Library.Load(Path.Combine(directoryName, (IntPtr.Size * 8).ToString(), "librdkafka.dll"));
+      // you can pass ANY valid library here, it's only important that kafka runs it's internal setup :-)
+      Confluent.Kafka.Library.Load("kernel32.dll");
 
       QueueHelper.SendMessage("test", "message1");
 
